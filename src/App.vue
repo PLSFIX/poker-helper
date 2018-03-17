@@ -22,7 +22,7 @@
         </div>
       </div>
       <div class="columns">
-        <div class="column">
+        <div class="column is-two-fifths">
           <EvCalc />
         </div>
         <div class="column"></div>

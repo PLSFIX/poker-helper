@@ -1,9 +1,9 @@
 <template>
   <div class="content">
     <h2 class="title is-4">{{name}}</h2>
-    <div class="field is-grouped">
+    <div class="field is-horizontal">
       <div class="control">
-        <button class="button is-primary" v-on:click="changeMode">
+        <button class="button is-info" v-on:click="toggleFullMode">
           {{ fullMode ? 'Toggle default mode' : 'Toggle full mode' }}
         </button>
       </div>
@@ -53,7 +53,6 @@
 import uuid from 'uuid/v4';
 
 export default {
-  name: 'OddsEquity',
   props: {
     name: String,
     colNames: {
@@ -88,7 +87,7 @@ export default {
     },
   },
   methods: {
-    changeMode() {
+    toggleFullMode() {
       this.fullMode = !this.fullMode;
     },
     manualCalc(value) {
@@ -109,6 +108,7 @@ export default {
     return {
       fullMode: false,
       calcMode: false,
+      foldEqMode: false,
       betAmount: '',
       customResult: [0, 0],
     };
@@ -150,9 +150,17 @@ export default {
     margin-top: 15px;
   }
   .field {
-    justify-content: space-between;
+    position: relative;
+  }
+  .control:not(:last-child) {
+    margin-right: 10px;
+  }
+  .checkbox {
+    line-height: 36px;
   }
   .bet-amount {
-    flex-basis:70px;
+    width: 70px;
+    position: absolute;
+    right: 0;
   }
 </style>
